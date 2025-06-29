@@ -1,24 +1,39 @@
 import Task from "../models/task.js"
-class NewTaskCreator{
+import * as style from "./task-creator-style.module.css"
+
+class NewTaskCreatorUIComp{
     constructor(task){
         this.task = task;
     }
 
     getDOM(){
         var container = document.createElement('div');
+        container.className = style.container;
 
         var projectNameLabel = document.createElement('label');
         projectNameLabel.innerHTML = "Project Name";
+
+        
         var projectName = document.createElement('input');
         projectName.setAttribute('type', 'text');
+        
+        var taskTitleLabel = document.createElement('label');
+        taskTitleLabel.innerHTML = "Task Title";
 
         var taskTitle = document.createElement('input');
         taskTitle.setAttribute('type', 'text');
         taskTitle.value = this.task.title;
 
+        var taskDescriptionLabel = document.createElement('label');
+        taskDescriptionLabel.innerHTML = "Task Description";
+
         var taskDescription = document.createElement('textarea');
 
         var tag = document.createElement('p');
+        var taglist = ['Urgent', 'New', 'Technology'];
+        taglist.forEach(tagItem =>{
+            tag.innerHTML += `<span class='${style.tags}'>${tagItem}</span> `   
+        });
 
         var editButton = document.createElement('button');
         editButton.innerHTML = "Edit";
@@ -26,17 +41,21 @@ class NewTaskCreator{
         var cancelButton = document.createElement('button');
         cancelButton.innerHTML = "Cancel";
 
-        container.appendChild(projectNameLabel);
-        container.appendChild(projectName);
-        container.appendChild(taskTitle);
-        container.appendChild(taskDescription);
-        container.appendChild(tag);
-        container.appendChild(editButton);
-        container.appendChild(cancelButton);
+        container.append(
+            projectNameLabel,
+            projectName,
+            taskTitleLabel,
+            taskTitle,
+            taskDescriptionLabel,
+            taskDescription,
+            tag,
+            editButton,
+            cancelButton
+        );
         return container;
     }
 
 }
 
 
-export default NewTaskCreator;
+export default NewTaskCreatorUIComp;
