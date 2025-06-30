@@ -4,11 +4,13 @@ import * as style from "./task-creator-style.module.css"
 class NewTaskCreatorUIComp{
     constructor(task){
         this.task = task;
+        this.container = document.createElement('div');
+        this.container.className = style.container;
+        this.container.id = "new-task-creator-window";
+        this.created = true;
     }
 
-    getDOM(){
-        var container = document.createElement('div');
-        container.className = style.container;
+    getDOM(){    
 
         var projectNameLabel = document.createElement('label');
         projectNameLabel.innerHTML = "Project Name";
@@ -29,6 +31,13 @@ class NewTaskCreatorUIComp{
 
         var taskDescription = document.createElement('textarea');
 
+        var dueDateLabel = document.createElement("label");
+        dueDateLabel.innerHTML = "Due Date";
+
+        var dueDateElement = document.createElement("input");
+        dueDateElement.setAttribute("type", "date");
+
+
         var tag = document.createElement('p');
         var taglist = ['Urgent', 'New', 'Technology'];
         taglist.forEach(tagItem =>{
@@ -40,20 +49,30 @@ class NewTaskCreatorUIComp{
 
         var cancelButton = document.createElement('button');
         cancelButton.innerHTML = "Cancel";
+        cancelButton.addEventListener('click', () => this.closeSubWindow());
 
-        container.append(
+        this.container.append(
             projectNameLabel,
             projectName,
             taskTitleLabel,
             taskTitle,
             taskDescriptionLabel,
             taskDescription,
+            dueDateLabel,
+            dueDateElement,
             tag,
             editButton,
             cancelButton
         );
-        return container;
+
+        
+        return this.container;
     }
+
+    closeSubWindow(){
+        this.container.remove();
+    }
+
 
 }
 

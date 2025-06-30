@@ -15,7 +15,7 @@ label{
     color:rgb(85, 85, 85);
 }
 
-input[type="text"]{
+input[type="text"], input[type="date"]{
     font-size:1.2rem;
 }
 .container > input,label{
@@ -23,11 +23,16 @@ input[type="text"]{
     margin-bottom: 0px;
 }
 
-.container > input {
+.container > input{
     margin-bottom: 24px;
     border:0px;
     border-bottom:1px solid rgb(43, 43, 43);
     outline: none;
+}
+
+.container > textarea{
+    margin-bottom: 24px;
+
 }
 
 .container > input:focus {
