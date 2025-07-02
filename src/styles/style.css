@@ -4,6 +4,12 @@
 
 .focused_overlay{
     margin:auto;
+    background-color: rgba(32, 32, 32, 0.267);
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
 }
 
 .hidden{
@@ -13,3 +19,4 @@
 .visible{
     display: block;
 }
+
