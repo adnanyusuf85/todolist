@@ -1,50 +1,79 @@
 import "./styles/style.css"
+import sidebar from "./components/sidebar.js"
 import Task from './models/task.js'
 import NewTaskCreatorUIComp from './components/newTaskCreator.js'
 
-let task1 = new Task();
-task1.title = "my task";
 
-let para = document.createElement("p");
-para.innerHTML = task1.title;
+let container = document.createElement("div");
+container.id = "container";
 
-let newTaskButton = document.createElement('button');
-newTaskButton.textContent = "Add New Task";
-newTaskButton.addEventListener("click",overlayScreenPaint.bind(null, (new NewTaskCreatorUIComp(new Task())).getDOM()));
-document.body.appendChild(para);
-document.body.appendChild(newTaskButton);
+let side_bar = sidebar();
+side_bar.id = "sidebar";
 
-let overlay_screen = document.createElement('div');
-overlay_screen.id = "overlay-screen";
-overlay_screen.classList.add("focused_overlay");
-overlay_screen.classList.add("hidden");
+let main_content_div = document.createElement("div");
+main_content_div.innerHTML = "I am the main content area";
+main_content_div.id = "main-content";
 
-document.body.appendChild(overlay_screen);
+let overlay_div = document.createElement("div");
+overlay_div.innerHTML = "I am the overlay div";
+overlay_div.id = "overlay-div";
 
-var observedNode;
-var observer = new MutationObserver((mutationRecords)=>{
-    mutationRecords.forEach( mutationRecord => {
-        mutationRecord.removedNodes.forEach( removedNode => {
-            if (removedNode.id === observedNode)
-                overlay_screen.classList.add("hidden");
-        });
-    });
-});
-observer.observe(overlay_screen, {childList:true});
+let notification_div = document.createElement("div");
+notification_div.innerHTML = "I am the notification bar";
+notification_div.id = "notification-div";
 
 
+container.append(
+    side_bar,
+    main_content_div,
+    overlay_div,
+    notification_div
+);
 
-function overlayScreenPaint(element)
-{
-    overlay_screen.appendChild(element);
-    observedNode = element.id;
-    overlay_screen.classList.remove("hidden");
+document.body.appendChild(container);
+// let task1 = new Task();
+// task1.title = "my task";
+
+// let para = document.createElement("p");
+// para.innerHTML = task1.title;
+
+// let newTaskButton = document.createElement('button');
+// newTaskButton.textContent = "Add New Task";
+// newTaskButton.addEventListener("click",overlayScreenPaint.bind(null, (new NewTaskCreatorUIComp(new Task())).getDOM()));
+// document.body.appendChild(para);
+// document.body.appendChild(newTaskButton);
+
+// let overlay_screen = document.createElement('div');
+// overlay_screen.id = "overlay-screen";
+// overlay_screen.classList.add("focused_overlay");
+// overlay_screen.classList.add("hidden");
+
+// document.body.appendChild(overlay_screen);
+
+// var observedNode;
+// var observer = new MutationObserver((mutationRecords)=>{
+//     mutationRecords.forEach( mutationRecord => {
+//         mutationRecord.removedNodes.forEach( removedNode => {
+//             if (removedNode.id === observedNode)
+//                 overlay_screen.classList.add("hidden");
+//         });
+//     });
+// });
+// observer.observe(overlay_screen, {childList:true});
+
+
+
+// function overlayScreenPaint(element)
+// {
+//     overlay_screen.appendChild(element);
+//     observedNode = element.id;
+//     overlay_screen.classList.remove("hidden");
     
-}
+// }
 
-function addNewTask(target_element){
-    let newTaskCreator = new NewTaskCreatorUIComp(new Task("My Task"));
-    let newTaskCreatorElement = newTaskCreator.getDOM();
-    let overlayscreen = document.getElementById("overlay-screen");
-    overlayscreen.appendChild(newTaskCreatorElement);
-}
+// function addNewTask(target_element){
+//     let newTaskCreator = new NewTaskCreatorUIComp(new Task("My Task"));
+//     let newTaskCreatorElement = newTaskCreator.getDOM();
+//     let overlayscreen = document.getElementById("overlay-screen");
+//     overlayscreen.appendChild(newTaskCreatorElement);
+// }

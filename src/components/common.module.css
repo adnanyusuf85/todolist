@@ -1,0 +1,8 @@
+:root{
+    --colorblue: #0000FF;
+}
+.apptitle{
+    font-size:2rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: var(--colorblue);
+}

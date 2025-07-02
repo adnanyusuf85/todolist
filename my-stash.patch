@@ -1,0 +1,61 @@
+diff --git a/src/components/newTaskCreator.js b/src/components/newTaskCreator.js
+index d1c4931..d86cd92 100644
+--- a/src/components/newTaskCreator.js
++++ b/src/components/newTaskCreator.js
+@@ -40,6 +40,7 @@ class NewTaskCreatorUIComp{
+ 
+         var cancelButton = document.createElement('button');
+         cancelButton.innerHTML = "Cancel";
++        cancelButton.addEventListener('click', deleteTaskCreator);
+ 
+         container.append(
+             projectNameLabel,
+@@ -55,6 +56,10 @@ class NewTaskCreatorUIComp{
+         return container;
+     }
+ 
++    deleteTaskCreator(){
++        console.log("this should have been a delete");
++    }
++
+ }
+ 
+ 
+diff --git a/src/index.js b/src/index.js
+index a1d35f7..63cded2 100644
+--- a/src/index.js
++++ b/src/index.js
+@@ -7,8 +7,17 @@ task1.title = "my task";
+ 
+ let para = document.createElement("p");
+ para.innerHTML = task1.title;
++
++let newTaskButton = document.createElement('button');
++newTaskButton.textContent = "Add New Task";
++newTaskButton.addEventListener("click",addNewTask);
+ document.body.appendChild(para);
++document.body.appendChild(newTaskButton);
+ 
+-let newTaskCreator = new NewTaskCreatorUIComp(new Task("My Task"));
+ 
+-document.body.appendChild(newTaskCreator.getDOM());
+\ No newline at end of file
++function addNewTask(){
++    let newTaskCreator = new NewTaskCreatorUIComp(new Task("My Task"));
++    let newTaskCreatorElement = newTaskCreator.getDOM();
++    newTaskCreatorElement.classList.add("focused_overlay");
++    document.body.appendChild(newTaskCreatorElement);
++}
+diff --git a/src/styles/style.css b/src/styles/style.css
+index 28a953d..4f9823d 100644
+--- a/src/styles/style.css
++++ b/src/styles/style.css
+@@ -1,3 +1,7 @@
+ *{
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
++}
++
++.focused_overlay{
++    margin:auto;
+ }
+\ No newline at end of file
