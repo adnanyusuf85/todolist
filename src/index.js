@@ -34,6 +34,27 @@ container.append(
 );
 
 document.body.appendChild(container);
+
+
+function loadpage(){
+    loadSkeleton();
+    loadSideBar();
+    loadcontent();
+
+    let projects = retrieveProjectsListInDOM();
+
+    projects.addMainContentDisplayClickEvent();
+
+
+}
+
+function addProject(project){
+    addProjectToDataStore(project);
+    loadSideBar();
+    loadContent(project.id);
+}
+
+
 // let task1 = new Task();
 // task1.title = "my task";
 
