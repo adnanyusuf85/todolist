@@ -34,12 +34,15 @@
 }
 
 #sidebar{
-    border:1px solid red;
     width: 320px;
+    padding: 16px;
 }
 
 #main-content{
-    border: 1px solid green;
+    border-left: 1px solid rgb(203, 203, 203);
+    padding: 16px;
+    height: 100vh;
+    box-sizing: border-box;
     width: 100%;
 }
 
