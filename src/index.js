@@ -1,4 +1,5 @@
 import "./styles/style.css"
+import "@fontsource/jetbrains-mono"
 import sidebar from "./components/sidebar.js"
 import Task from './models/task.js'
 import NewTaskCreatorUIComp from './components/newTaskCreator.js'
@@ -9,6 +10,8 @@ container.id = "container";
 
 let side_bar = sidebar();
 side_bar.id = "sidebar";
+
+
 
 let main_content_div = document.createElement("div");
 main_content_div.innerHTML = "I am the main content area";

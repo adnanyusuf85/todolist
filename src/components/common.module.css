@@ -1,8 +1,23 @@
 :root{
-    --colorblue: #0000FF;
+    --primary: rgb(0, 0, 0);
 }
 .apptitle{
-    font-size:2rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: var(--colorblue);
+    font-size:1.2rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 24px;
+    user-select: none;
+}
+
+.project_in_list{
+    margin-bottom:8px;
+}
+
+.clickable{
+    cursor:pointer;
+
+}
+
+.clickable:hover{
+    color: rgb(36, 108, 171);
 }
