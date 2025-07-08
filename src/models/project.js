@@ -1,8 +1,11 @@
+
+
 export default class Project{
-    constructor(title, description = ""){
+    constructor(title, description = "", tasks = []){
+        this.id = crypto.randomUUID();
         this.title = title;
         this.description = description;
-        this.tasks = [];
+        this.tasks = tasks;
     }
 
     updateTitle(newTitle){

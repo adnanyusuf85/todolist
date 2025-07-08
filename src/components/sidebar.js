@@ -7,10 +7,6 @@ export default function getSideBar(){
     title.innerText = "Taskdo"
     title.classList.add(style.apptitle);
     containing_div.appendChild(title);
-
-
-    let projects_list = projectslist();
-    containing_div.appendChild(projects_list);
     
     return containing_div;
 }

@@ -22,7 +22,9 @@
 .visible{
     display: block;
 }
-
+.active{
+    background-color: rgb(236, 236, 236);
+}
 *{
     margin: 0px;
     padding: 0px;

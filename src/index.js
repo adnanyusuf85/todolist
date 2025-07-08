@@ -2,58 +2,17 @@ import "./styles/style.css"
 import "@fontsource/jetbrains-mono"
 import sidebar from "./components/sidebar.js"
 import Task from './models/task.js'
-import NewTaskCreatorUIComp from './components/newTaskCreator.js'
+import UIManager from './models/uiManager.js'
+import DataManager from './models/dataManager.js'
+import ToDoAppManager from './models/toDoAppManager.js'
 
 
-let container = document.createElement("div");
-container.id = "container";
+let uiManager = new UIManager();
+let dataManager = new DataManager();
 
-let side_bar = sidebar();
-side_bar.id = "sidebar";
+let toDoAppManager = new ToDoAppManager(dataManager, uiManager);
 
-
-
-let main_content_div = document.createElement("div");
-main_content_div.innerHTML = "I am the main content area";
-main_content_div.id = "main-content";
-
-let overlay_div = document.createElement("div");
-overlay_div.innerHTML = "I am the overlay div";
-overlay_div.id = "overlay-div";
-
-let notification_div = document.createElement("div");
-notification_div.innerHTML = "I am the notification bar";
-notification_div.id = "notification-div";
-
-
-container.append(
-    side_bar,
-    main_content_div,
-    overlay_div,
-    notification_div
-);
-
-document.body.appendChild(container);
-
-
-function loadpage(){
-    loadSkeleton();
-    loadSideBar();
-    loadcontent();
-
-    let projects = retrieveProjectsListInDOM();
-
-    projects.addMainContentDisplayClickEvent();
-
-
-}
-
-function addProject(project){
-    addProjectToDataStore(project);
-    loadSideBar();
-    loadContent(project.id);
-}
-
+toDoAppManager.init();
 
 // let task1 = new Task();
 // task1.title = "my task";
