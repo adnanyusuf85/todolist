@@ -39,6 +39,15 @@ export default class ToDoAppManager{
 
     loadProjects(projectsList){
         this.uiManager.loadProjects(projectsList);
+        let projectsListDOM = this.uiManager.side_bar.querySelectorAll('[id^="projects_list_item"]')
+        projectsListDOM.forEach(projectListing => {
+            
+            projectListing.addEventListener("click", () =>{
+                let projectID = projectListing.dataset.id;
+                let selectedProject = this.dataManager.getProjectById(projectID);
+                this.setActiveProject(selectedProject);
+            });
+        });
     }
 
 

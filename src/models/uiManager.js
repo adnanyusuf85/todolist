@@ -1,33 +1,33 @@
 import '../styles/style.css'
 import getSideBar from '../components/sidebar.js'
 import CreateProjectsList from '../components/projectsList.js';
+import generateTaskList from '../components/generateTaskList.js';
 
 export default class UIManager{
     constructor(){
         this.container = document.createElement("div");
         this.container.id = "container";
 
-        let side_bar = getSideBar();
-        side_bar.id = "sidebar";
+        this.side_bar = getSideBar();
+        this.side_bar.id = "sidebar";
 
-        let main_content_div = document.createElement("div");
-        main_content_div.innerHTML = "I am the main content area";
-        main_content_div.id = "main-content";
+        this.main_content_div = document.createElement("div");
+        this.main_content_div.id = "main-content";
 
-        let overlay_div = document.createElement("div");
-        overlay_div.innerHTML = "I am the overlay div";
-        overlay_div.id = "overlay-div";
+        this.overlay_div = document.createElement("div");
+        this.overlay_div.innerHTML = "I am the overlay div";
+        this.overlay_div.id = "overlay-div";
 
-        let notification_div = document.createElement("div");
-        notification_div.innerHTML = "I am the notification bar";
-        notification_div.id = "notification-div";
+        this.notification_div = document.createElement("div");
+        this.notification_div.innerHTML = "I am the notification bar";
+        this.notification_div.id = "notification-div";
 
 
         this.container.append(
-            side_bar,
-            main_content_div,
-            overlay_div,
-            notification_div
+            this.side_bar,
+            this.main_content_div,
+            this.overlay_div,
+            this.notification_div
         );
 
         
@@ -45,12 +45,12 @@ export default class UIManager{
     }
 
     unsetActiveProject(project){
-        let projectsDOMList = document.getElementById('projects-list');
-        let projectItemInSideBar = projectsDOMList.getElementById('projects_list_item_' + project.id);
+        let projectsDOMList = document.getElementById('projects_list');
+        let projectItemInSideBar = projectsDOMList.querySelector('#projects_list_item_' + project.id);
         if (projectItemInSideBar === null){
             return;
         }
-        projectItemInSideBar.classList.Remove('active'); 
+        projectItemInSideBar.classList.remove('active'); 
     }
 
     setActiveProject(activeProject, lastActiveProject){
@@ -65,12 +65,15 @@ export default class UIManager{
     }
 
     loadTasksForProject(project){
-        return null;       
+        this.main_content_div.innerHTML = "";
+        this.main_content_div.append(generateTaskList(project));
     }
 
     loadProjects(projectsList){
-        let projects_list = CreateProjectsList(projectsList);
-        let sidebar = this.container.querySelector('#sidebar');
-        sidebar.appendChild(projects_list);
+        this.side_bar.appendChild(CreateProjectsList(projectsList));
+    }
+
+    getProjectsListDOM(){
+
     }
 }
