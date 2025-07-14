@@ -1,0 +1,10 @@
+
+.taskcard{
+    border: 1px solid rgb(188, 188, 188);
+    padding: 8px 16px;
+    margin-bottom:16px;
+}
+
+.editbutton{
+    padding: 4px 8px;
+}
