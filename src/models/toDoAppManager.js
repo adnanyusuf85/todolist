@@ -1,11 +1,15 @@
 export default class ToDoAppManager{
     
     #activeProject = null;
-    
+    test = 'test';
     constructor(dataManager, uiManager)
     {
         this.dataManager = dataManager;
         this.uiManager = uiManager;
+        this.uiManager.onEditFunction = (task) => {
+            uiManager.renderEditWindow(task);
+            console.log(this.test);
+        }
         
     }
     
@@ -49,6 +53,8 @@ export default class ToDoAppManager{
             });
         });
     }
+
+    
 
 
 }

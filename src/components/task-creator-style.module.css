@@ -5,6 +5,7 @@
     border-radius: 4px;
     color:rgb(37, 37, 37);
     max-width: 600px;
+    min-width:400px;
     padding-top: 32px;
     padding-bottom: 40px;
     background-color: white;
@@ -60,3 +61,4 @@ textarea{
 button{
     margin-right: 8px;
 }
+

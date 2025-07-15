@@ -1,10 +1,13 @@
 import '../styles/style.css'
+import * as taskCardStyle from '../components/taskcard.module.css';
+
 import getSideBar from '../components/sidebar.js'
 import CreateProjectsList from '../components/projectsList.js';
-import generateTaskList from '../components/generateTaskList.js';
+import generateTaskCards from '../components/generateTaskCards.js';
 
 export default class UIManager{
     constructor(){
+        this.identifier = "The UI Manager";
         this.container = document.createElement("div");
         this.container.id = "container";
 
@@ -31,6 +34,21 @@ export default class UIManager{
         );
 
         
+    }
+
+    
+
+    renderEditWindow(task){
+        console.log(task);
+    }
+
+    onDeleteFunction = () => {
+        console.log("deleting");
+    }
+
+    onSaveTask = () => {
+        console.log("saving...");
+        console.log("saved");
     }
 
     renderPage(){
@@ -66,7 +84,8 @@ export default class UIManager{
 
     loadTasksForProject(project){
         this.main_content_div.innerHTML = "";
-        this.main_content_div.append(generateTaskList(project));
+        let task_cards = generateTaskCards(project, this.onEditFunction, this.onDeleteFunction);
+        this.main_content_div.append(task_cards);
     }
 
     loadProjects(projectsList){
