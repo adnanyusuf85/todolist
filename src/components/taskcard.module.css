@@ -3,8 +3,58 @@
     border: 1px solid rgb(188, 188, 188);
     padding: 8px 16px;
     margin-bottom:16px;
+    max-width: 600px;
 }
 
+.title{
+    font-weight: 400;
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+}
+
+.description{
+    color:orange;
+}
+
+.project{
+    font-variant-caps: all-small-caps;
+    font-size: 1rem;
+}
+
+.time{
+
+
+}
+
+.date{
+    font-size: 1rem;
+    margin-bottom: 16px;
+}
+
+
 .editbutton{
-    padding: 4px 8px;
+    /* background-color: green; */
+    
+}
+
+.deleteButton{
+    color:white;
+}
+
+.button_array{
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+}
+
+.tags{
+    margin-bottom:32px;
+}
+
+.tags > span {
+    border-radius: 2px;
+    margin-right:8px;
+    padding: 2px 8px;
+    vertical-align: middle;
+    
 }

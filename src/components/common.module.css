@@ -1,9 +1,5 @@
-:root{
-    --primary: rgb(0, 0, 0);
-}
 .apptitle{
     font-size:1.2rem;
-    color: var(--primary);
     font-weight: 600;
     margin-bottom: 24px;
     user-select: none;
@@ -14,11 +10,3 @@
     padding:8px 16px;
 }
 
-.clickable{
-    cursor:pointer;
-
-}
-
-.clickable:hover{
-    color: rgb(75, 75, 75);
-}

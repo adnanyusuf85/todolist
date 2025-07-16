@@ -7,7 +7,7 @@ export default class Task{
         this.description;
         this.priority = priority;
         this.status = status;
-        this.tags = [];
+        this.tags = tags;
         this.dueDate = dueDate;
         this.project = project;
     }

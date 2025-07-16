@@ -1,6 +1,17 @@
+:root{
+    --dark:#292929;
+    --dark-medium: #474747;
+    --dark-low: #7A7A7A;
+    --neutral: hsl(0, 0%, 84%);
+    --neutral-low: hsl(0, 0%, 92%);
+    --white:#FFFFFF;
+    --caution: #7A7A7A;
+
+}
 *{
     font-family: "JetBrains Mono";
     font-weight: 400;
+    color:var(--dark);
 }
 
 .focused_overlay{
@@ -58,4 +69,53 @@
     position: absolute;
     border: 1px solid blue;
     display: none;
+}
+
+
+button{
+    padding: 4px 8px;
+    border: 1px solid var(--dark-low); 
+    border-radius: 2px;
+}
+
+button:hover{
+    background-color: var(--dark);
+    color:white;
+}
+
+.component{
+    padding:8px 16px;
+}
+
+.primary-text{
+    color:var(--dark);
+}
+
+.secondary-text{
+    color:var(--dark-low);
+}
+
+.tag{
+    background-color:var(--neutral-low);
+}
+
+.cautious-button{
+    background-color: var(--caution);
+    color:var(--white);
+    border-color: var(--dark);
+}
+
+.clickable{
+    cursor:pointer;
+
+}
+
+.clickable:hover{
+    background-color: var(--dark-medium);
+    color:white;
+    
+}
+
+button{
+    cursor:pointer;
 }

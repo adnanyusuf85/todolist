@@ -6,8 +6,8 @@ export default class DataManager{
         this.projectsList = [
             new Project('Default', "", 
                 [
-                    new Task({title:"Wash the dishes", description: "Task 1", project: "Default"}),
-                    new Task({title:"Exercise HIIT", description: "Task 2", project: "Default"})
+                    new Task({title:"Wash the dishes", description: "Task 1", project: "Default", tags:['Work', 'House Keeping']}),
+                    new Task({title:"Exercise HIIT", description: "Task 2", project: "Default", tags:['Health', "Well being"]})
                 ]),
             new Project('Learning', "", 
                 [

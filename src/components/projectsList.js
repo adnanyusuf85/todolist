@@ -16,7 +16,7 @@ export default function createProjectsList(projects){
     
     list.forEach( (item) => {
         let el = document.createElement('p');
-        el.classList.add(style.clickable,style.project_in_list);
+        el.classList.add('clickable', style.project_in_list);
         el.id = 'projects_list_item_'+item.id;
         el.setAttribute("data-id", item.id);
         el.innerHTML = item.title;
