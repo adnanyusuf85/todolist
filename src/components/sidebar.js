@@ -8,5 +8,11 @@ export default function getSideBar(){
     title.classList.add(style.apptitle, 'primary-text');
     containing_div.appendChild(title);
     
+    let addTaskButton = document.createElement("button");
+    addTaskButton.id = "addTaskButton";
+    addTaskButton.innerHTML = "+ Add Task";
+    addTaskButton.classList.add("spbtm_16");
+    containing_div.appendChild(addTaskButton);
+    
     return containing_div;
 }

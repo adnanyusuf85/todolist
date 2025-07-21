@@ -4,6 +4,7 @@ import * as taskCardStyle from '../components/taskcard.module.css';
 import getSideBar from '../components/sidebar.js'
 import CreateProjectsList from '../components/projectsList.js';
 import generateTaskCards from '../components/generateTaskCards.js';
+import TaskEditor from "../components/taskEditor.js";
 
 export default class UIManager{
     constructor(){
@@ -13,13 +14,17 @@ export default class UIManager{
 
         this.side_bar = getSideBar();
         this.side_bar.id = "sidebar";
+        let addTaskButton = this.side_bar.querySelector("#addTaskButton");
+        addTaskButton.addEventListener("click", ()=>{
+            this.addTaskButtonClicked();
+        });
 
         this.main_content_div = document.createElement("div");
         this.main_content_div.id = "main-content";
 
         this.overlay_div = document.createElement("div");
-        this.overlay_div.innerHTML = "I am the overlay div";
-        this.overlay_div.id = "overlay-div";
+        this.overlay_div.id = "focused_overlay";
+        this.overlay_div.classList.add('collapsed');
 
         this.notification_div = document.createElement("div");
         this.notification_div.innerHTML = "I am the notification bar";
@@ -32,6 +37,21 @@ export default class UIManager{
             this.overlay_div,
             this.notification_div
         );
+
+
+
+        var observer = new MutationObserver((mutationRecords) => {
+            mutationRecords.forEach(mutationRecord => {
+                let target_id = mutationRecord.target.id;
+                let removed_nodes = mutationRecord.removedNodes.length;
+                if (target_id === 'focused_overlay' && removed_nodes !== 0){
+                    this.overlay_div.classList.remove("visible");
+                    this.overlay_div.classList.add("collapsed");
+                }
+            });
+        });
+
+        observer.observe(this.overlay_div, {childList:true});
 
         
     }
@@ -94,5 +114,13 @@ export default class UIManager{
 
     getProjectsListDOM(){
 
+ 
+    }
+
+    addTaskButtonClicked(){
+        this.overlay_div.classList.remove('collapsed');
+        this.overlay_div.classList.add('visible');
+        let taskEditor = new TaskEditor();
+        this.overlay_div.appendChild(taskEditor.getDOM());
     }
 }

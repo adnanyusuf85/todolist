@@ -49,9 +49,9 @@ export default class TaskCard{
         });
 
         title.innerHTML = this.task.title;
-        project.innerHTML = this.task.project;
-        time.innerHTML = `${this.task.dueDate.getHours().toString().padStart(2,'0')}:${this.task.dueDate.getMinutes().toString().padStart(2,'0')}`;
-        dueDate.innerHTML = `${this.task.dueDate.getDate().toString().padStart(2,'0')} ${getMonthInString(this.task.dueDate.getMonth())}, ${this.task.dueDate.getFullYear()} `;
+        project.innerHTML = 'Project: '+ this.task.project;
+        time.innerHTML = `Due by: ${this.task.dueDate.getHours().toString().padStart(2,'0')}:${this.task.dueDate.getMinutes().toString().padStart(2,'0')}`;
+        dueDate.innerHTML = `Due Date: ${this.task.dueDate.getDate().toString().padStart(2,'0')} ${getMonthInString(this.task.dueDate.getMonth())}, ${this.task.dueDate.getFullYear()} `;
         taskCard.append(project, title, time, dueDate, tags, buttonArray);
         return taskCard;
     }

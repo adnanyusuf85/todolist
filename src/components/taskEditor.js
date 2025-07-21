@@ -1,23 +1,28 @@
 import Task from "../models/task.js"
 import * as style from "./task-creator-style.module.css"
 
-class NewTaskCreatorUIComp{
-    constructor(task){
+class TaskEditor{
+    constructor(task = new Task({}), windowTitle = 'New Task'){
         this.task = task;
         this.container = document.createElement('div');
         this.container.className = style.container;
         this.container.id = "new-task-creator-window";
         this.created = true;
+        this.windowTitle = windowTitle;
     }
 
+
     getDOM(){    
+        let windowTitle = document.createElement('h2');
+        windowTitle.innerHTML = this.windowTitle;
+        windowTitle.classList.add('spbtm_32');
 
         var projectNameLabel = document.createElement('label');
         projectNameLabel.innerHTML = "Project Name";
 
         
-        var projectName = document.createElement('input');
-        projectName.setAttribute('type', 'text');
+        var projectName = document.createElement('select');
+        projectName.classList.add('spbtm_16');
         
         var taskTitleLabel = document.createElement('label');
         taskTitleLabel.innerHTML = "Task Title";
@@ -28,8 +33,11 @@ class NewTaskCreatorUIComp{
 
         var taskDescriptionLabel = document.createElement('label');
         taskDescriptionLabel.innerHTML = "Task Description";
+        
 
         var taskDescription = document.createElement('textarea');
+        taskDescription.classList.add('padding_8');
+        taskDescription.style.height = '100px';
 
         var dueDateLabel = document.createElement("label");
         dueDateLabel.innerHTML = "Due Date";
@@ -39,6 +47,7 @@ class NewTaskCreatorUIComp{
 
 
         var tag = document.createElement('p');
+        tag.classList.add('spbtm_32');
         var taglist = ['Urgent', 'New', 'Technology'];
         taglist.forEach(tagItem =>{
             tag.innerHTML += `<span class='${style.tags}'>${tagItem}</span> `   
@@ -51,7 +60,12 @@ class NewTaskCreatorUIComp{
         cancelButton.innerHTML = "Cancel";
         cancelButton.addEventListener('click', () => this.closeSubWindow());
 
+        var exitButton = document.createElement('button');
+        exitButton.innerHTML = "X";
+        exitButton.addEventListener('click', () => this.closeSubWindow());
+
         this.container.append(
+            windowTitle,
             projectNameLabel,
             projectName,
             taskTitleLabel,
@@ -77,4 +91,4 @@ class NewTaskCreatorUIComp{
 }
 
 
-export default NewTaskCreatorUIComp;
+export default TaskEditor;
