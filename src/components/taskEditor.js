@@ -54,7 +54,12 @@ class TaskEditor{
         });
 
         var editButton = document.createElement('button');
-        editButton.innerHTML = "Edit";
+        if (this.windowTitle == "New Task"){
+            editButton.innerHTML = "Save";
+        }
+        else {
+            editButton.innerHTML = "Edit";
+        }
 
         var cancelButton = document.createElement('button');
         cancelButton.innerHTML = "Cancel";

@@ -59,7 +59,10 @@ export default class UIManager{
     
 
     renderEditWindow(task){
-        console.log(task);
+         this.overlay_div.classList.remove('collapsed');
+        this.overlay_div.classList.add('visible');
+        let taskEditor = new TaskEditor(task, "Edit Task");
+        this.overlay_div.appendChild(taskEditor.getDOM());
     }
 
     onDeleteFunction = () => {
