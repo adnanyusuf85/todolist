@@ -8,7 +8,7 @@ export default class ToDoAppManager{
         this.uiManager = uiManager;
         this.uiManager.onEditFunction = (task) => {
             uiManager.renderEditWindow(task);
-            console.log(this.test);
+            //let projectsList = this.dataManager.getProjectsList();
         }
         
     }

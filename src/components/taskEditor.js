@@ -2,15 +2,20 @@ import Task from "../models/task.js"
 import * as style from "./task-creator-style.module.css"
 
 class TaskEditor{
-    constructor(task = new Task({}), windowTitle = 'New Task'){
+    constructor(task){
         this.task = task;
         this.container = document.createElement('div');
         this.container.className = style.container;
         this.container.id = "new-task-creator-window";
         this.created = true;
-        this.windowTitle = windowTitle;
+        this.windowTitle = 'Task Editor';
     }
 
+    createEditButton(){
+        let editButton = document.createElement('button');
+        editButton.innerHTML = "Edit";
+        return editButton;
+    }
 
     getDOM(){    
         let windowTitle = document.createElement('h2');
@@ -22,6 +27,13 @@ class TaskEditor{
 
         
         var projectName = document.createElement('select');
+        let option1 = document.createElement('option');
+        option1.innerHTML = "The Option";
+        
+        let option2 = document.createElement('option');
+        option2.innerHTML = "The Other Option";
+        option2.selected = true;
+        projectName.append(option1, option2);
         projectName.classList.add('spbtm_16');
         
         var taskTitleLabel = document.createElement('label');
@@ -44,7 +56,9 @@ class TaskEditor{
 
         var dueDateElement = document.createElement("input");
         dueDateElement.setAttribute("type", "date");
-
+        let formatedDueDate = this.getFormatedDate(this.task.dueDate);
+        // dueDateElement = this.task.dueDate;
+        dueDateElement.value = formatedDueDate;
 
         var tag = document.createElement('p');
         tag.classList.add('spbtm_32');
@@ -53,13 +67,7 @@ class TaskEditor{
             tag.innerHTML += `<span class='${style.tags}'>${tagItem}</span> `   
         });
 
-        var editButton = document.createElement('button');
-        if (this.windowTitle == "New Task"){
-            editButton.innerHTML = "Save";
-        }
-        else {
-            editButton.innerHTML = "Edit";
-        }
+        var editButton = this.createEditButton();
 
         var cancelButton = document.createElement('button');
         cancelButton.innerHTML = "Cancel";
@@ -85,7 +93,19 @@ class TaskEditor{
         );
 
         
+        
         return this.container;
+    }
+
+    getFormatedDate(jsDate){
+        let year = jsDate.getYear() + 1900;
+        let month = jsDate.getMonth();
+        let day = jsDate.getDate();
+        let yearPadded = String(year).padStart(4, '0');
+        let monthPadded = String(month).padStart(2, '0');
+        let dayPadded = String(day).padStart(2, '0');
+            
+        return `${yearPadded}-${monthPadded}-${dayPadded}`;
     }
 
     closeSubWindow(){

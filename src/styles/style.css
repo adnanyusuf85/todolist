@@ -128,7 +128,12 @@ input[type='text'], select{
 
 select{
     width:100%;
+    padding: 8px;
 }
+option{
+    padding: 8px;
+}
+
 label{
     padding-bottom: 8px;
 }

@@ -5,6 +5,7 @@ import getSideBar from '../components/sidebar.js'
 import CreateProjectsList from '../components/projectsList.js';
 import generateTaskCards from '../components/generateTaskCards.js';
 import TaskEditor from "../components/taskEditor.js";
+import NewTaskMaker from "../components/newTaskMaker.js";
 
 export default class UIManager{
     constructor(){
@@ -16,7 +17,7 @@ export default class UIManager{
         this.side_bar.id = "sidebar";
         let addTaskButton = this.side_bar.querySelector("#addTaskButton");
         addTaskButton.addEventListener("click", ()=>{
-            this.addTaskButtonClicked();
+            this.renderNewTaskWindow();
         });
 
         this.main_content_div = document.createElement("div");
@@ -57,11 +58,12 @@ export default class UIManager{
     }
 
     
-
     renderEditWindow(task){
-         this.overlay_div.classList.remove('collapsed');
+        this.overlay_div.classList.remove('collapsed');
         this.overlay_div.classList.add('visible');
-        let taskEditor = new TaskEditor(task, "Edit Task");
+
+        let taskEditor = new TaskEditor(task);
+        
         this.overlay_div.appendChild(taskEditor.getDOM());
     }
 
@@ -120,10 +122,10 @@ export default class UIManager{
  
     }
 
-    addTaskButtonClicked(){
+    renderNewTaskWindow(){
         this.overlay_div.classList.remove('collapsed');
         this.overlay_div.classList.add('visible');
-        let taskEditor = new TaskEditor();
+        let taskEditor = new NewTaskMaker();
         this.overlay_div.appendChild(taskEditor.getDOM());
     }
 }
