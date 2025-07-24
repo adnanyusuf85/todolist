@@ -1,11 +1,11 @@
 ############## TODO ########################
 
-P0 [ ] make the task card have two states: simple, detailed
+P0 [ ] Make the task card have two states: simple, detailed
+P0 [ ] add task status control
 P0 [ ] change from tags to csv when going from view to edit
 P1 [ ] some inputs border does not change color when selected
 P2 [ ] add close button to windows
 P2 [ ] create a common window (exitable, draggable?) and extend it to create other windows
-P2 [ ] add task status control
 P2 [ ] Reduce space between the edit and delete buttons by half
 
 ############## IN PROGRESS ########################
