@@ -1,0 +1,35 @@
+############## TODO ########################
+
+P0 [ ] make the task card have two states: simple, detailed
+P0 [ ] change from tags to csv when going from view to edit
+P1 [ ] some inputs border does not change color when selected
+P2 [ ] add close button to windows
+P2 [ ] create a common window (exitable, draggable?) and extend it to create other windows
+P2 [ ] add task status control
+P2 [ ] Reduce space between the edit and delete buttons by half
+
+############## IN PROGRESS ########################
+
+
+
+
+
+
+
+
+
+
+
+############## COMPLETED ########################
+
+[x] create a guid for tasks
+
+[x] create a project class
+
+[x] by default all tasks belong to default project
+
+[x] but then when creating a task, user can choose from available projects
+
+[x] so it should be such that in the entire application there 
+is an overlay which handles all windows being added to it, and at any given time, 
+only one sub-window is displayed

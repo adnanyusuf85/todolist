@@ -17,6 +17,9 @@ export default class TaskCard{
         let project = document.createElement('p');
         project.classList.add(style.project, 'secondary-text');
 
+        let taskDetail = document.createElement('p');
+        taskDetail.classList.add(style.taskDetail, 'secondary-text');
+
         let time = document.createElement('p');
         time.classList.add(style.time);
 
@@ -50,9 +53,10 @@ export default class TaskCard{
 
         title.innerHTML = this.task.title;
         project.innerHTML = 'Project: '+ this.task.project;
+        taskDetail.innerHTML = this.task.description;
         time.innerHTML = `Due by: ${this.task.dueDate.getHours().toString().padStart(2,'0')}:${this.task.dueDate.getMinutes().toString().padStart(2,'0')}`;
         dueDate.innerHTML = `Due Date: ${this.task.dueDate.getDate().toString().padStart(2,'0')} ${getMonthInString(this.task.dueDate.getMonth())}, ${this.task.dueDate.getFullYear()} `;
-        taskCard.append(project, title, time, dueDate, tags, buttonArray);
+        taskCard.append(project, title,  taskDetail, time, dueDate, tags, buttonArray);
         return taskCard;
     }
     

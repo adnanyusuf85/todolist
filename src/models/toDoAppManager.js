@@ -10,6 +10,10 @@ export default class ToDoAppManager{
             uiManager.renderEditWindow(task);
             //let projectsList = this.dataManager.getProjectsList();
         }
+        this.uiManager.taskSaveCallback = (task) => {
+            this.dataManager.saveTask(task);
+            this.uiManager.loadTasksForProject(this.#activeProject);
+        }
         
     }
     

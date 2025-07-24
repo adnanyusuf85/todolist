@@ -24,4 +24,9 @@ export default class DataManager{
     getProjectById(projectID){
         return this.projectsList.filter(project => project.id === projectID)[0];
     }
+
+    saveTask(task){
+        console.log(task.title);
+        
+    }
 }

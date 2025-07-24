@@ -63,7 +63,7 @@ export default class UIManager{
         this.overlay_div.classList.add('visible');
 
         let taskEditor = new TaskEditor(task);
-        
+        taskEditor.setSaveCallback(this.taskSaveCallback);
         this.overlay_div.appendChild(taskEditor.getDOM());
     }
 

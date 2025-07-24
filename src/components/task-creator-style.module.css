@@ -32,6 +32,10 @@ input[type="text"], input[type="date"]{
     outline: none;
 }
 
+.container > select{
+    margin-bottom: 24px;
+}
+
 .container > textarea{
     margin-bottom: 24px;
 
